@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 interface ModalProps {
@@ -43,17 +43,17 @@ const Sound: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const handleFirstUserInteraction = () => {
-    const musicConsent = localStorage.getItem("musicConsent");
-    if (musicConsent === "true" && !isPlaying && audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-
-    ["click", "keydown", "touchstart"].forEach((event) =>
-      document.removeEventListener(event, handleFirstUserInteraction)
-    );
-  };
+  const handleFirstUserInteraction = useCallback(() => {
+      const musicConsent = localStorage.getItem("musicConsent");
+      if (musicConsent === "true" && !isPlaying && audioRef.current) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+  
+      ["click", "keydown", "touchstart"].forEach((event) =>
+        document.removeEventListener(event, handleFirstUserInteraction)
+      );
+    }, [isPlaying]);
 
   useEffect(() => {
     const consent = localStorage.getItem("musicConsent");

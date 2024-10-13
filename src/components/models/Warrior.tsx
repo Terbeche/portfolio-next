@@ -6,6 +6,7 @@ Command: npx gltfjsx@6.5.2 Noble_warrior_face_c_1009135354_refine.glb
 "use client";
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
+import * as THREE from 'three';
 import { GLTF } from 'three-stdlib';
 import { useFrame } from '@react-three/fiber';
 
@@ -19,14 +20,15 @@ type GLTFResult = GLTF & {
 };
 
 const Warrior = React.memo(function Warrior({ scale = 2, ...props }: React.ComponentProps<'group'>) {
-  const { nodes, materials } = useGLTF('/models/noble-warrior.glb') as GLTFResult;
+  const { nodes } = useGLTF('/models/noble-warrior.glb') as GLTFResult;
   
-  const modelRef = useRef();
+  const modelRef = useRef<THREE.Group>(null);
   
-  useFrame((state, delta, xrFrame) => {
-    modelRef.current.position.y += Math.sin(state.clock.getElapsedTime()) * 0.01;
-    modelRef.current.position.y -= Math.sin(state.clock.getElapsedTime()) * 0.001;
-
+  useFrame((state) => {
+    if (modelRef.current) {
+      modelRef.current.position.y += Math.sin(state.clock.getElapsedTime()) * 0.01;
+      modelRef.current.position.y -= Math.sin(state.clock.getElapsedTime()) * 0.001;
+    }
   })
   
   return (

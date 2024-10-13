@@ -7,11 +7,12 @@ Command: npx gltfjsx@6.5.2 scepter.glb
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Group } from "three";
+import { Group, Mesh } from "three";
+import * as THREE from "three";
 
 type GLTFResult = {
   nodes: {
-    mesh_0: THREE.Mesh;
+    mesh_0: Mesh;
   };
   materials: {
     [key: string]: THREE.Material;
@@ -19,7 +20,7 @@ type GLTFResult = {
 };
 
 const Scepter = React.memo(function Scepter(props: JSX.IntrinsicElements['group']) {
-    const { nodes, materials } = useGLTF("/models/scepter.glb") as GLTFResult;
+    const { nodes } = useGLTF("/models/scepter.glb") as unknown as GLTFResult;
     const modelRef = useRef<Group>(null);
   
     useFrame(() => {

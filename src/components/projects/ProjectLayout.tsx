@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 
 const item = {
   hidden: { opacity: 0, y: 100 },
@@ -14,11 +13,10 @@ interface ProjectLayoutProps {
   description: string;
   demoLink: string;
   sourceLink: string;
-  featuredImage: string;
   technologies: string[];
 }
 
-const ProjectLayout: React.FC<ProjectLayoutProps> = ({ name, description, demoLink, sourceLink, featuredImage, technologies }) => {
+const ProjectLayout: React.FC<ProjectLayoutProps> = ({ name, description, demoLink, sourceLink, technologies }) => {
   return (
     <ProjectLink
       variants={item}

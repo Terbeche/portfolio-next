@@ -23,7 +23,7 @@ interface GLTFResult {
 }
 
 const HatModel: React.FC<HatModelProps> = React.memo(function HatModel({ scale = 1.5, ...props }: React.ComponentProps<'group'>) {
-  const { nodes, materials } = useGLTF('/models/hat.glb') as GLTFResult;
+  const { nodes } = useGLTF('/models/hat.glb') as unknown as GLTFResult;
 
   const modelRef = useRef<Group>(null);
 

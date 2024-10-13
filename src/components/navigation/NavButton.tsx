@@ -99,7 +99,6 @@ import {
                 target={newTab ? "_blank" : "_self"}
                 className="text-foreground rounded-full flex items-center justify-center custom-bg"
                 aria-label={label}
-                name={label}
                 prefetch={false}
                 scroll={false}
               >
