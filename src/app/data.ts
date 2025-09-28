@@ -36,6 +36,16 @@ Websites:
   export const projectsData: Project[] = [
     {
       id: 1,
+      name: 'Thinking-With-AI',
+      featuredImage: '/images/thinking_with_ai.png',
+      description:
+        'A webapp that allows users to detect DR based on retinal images using different AI models',
+      technologies: ['FastAPI', 'React','Next', 'Python', 'Pytorch'],
+      sourceLink: 'https://github.com/Terbeche/PFE',
+      demoLink: 'https://thinking-with-ai-0820eb9e6eb4.herokuapp.com/',
+    },
+    {
+      id: 2,
       name: 'Weather-App',
       featuredImage: '/images/weather_app.png',
       description:
@@ -45,7 +55,7 @@ Websites:
       demoLink: 'https://weather-app-dashboard-seven.vercel.app/',
     },
     {
-      id: 2,
+      id: 3,
       name: 'Social Network',
       featuredImage: '/images/social_network.png',
       description:
@@ -55,7 +65,7 @@ Websites:
       demoLink: 'https://social-network-web-app-399a54c31085.herokuapp.com/',
     },
     {
-      id: 3,
+      id: 4,
       name: 'Recipe App',
       featuredImage: '/images/recipe_app.png',
       description:
@@ -63,16 +73,6 @@ Websites:
       technologies: ['Rails', 'PostgreSQL', 'Tailwind CSS'],
       sourceLink: 'https://github.com/Terbeche/recipe-app',
       demoLink: 'https://recipe-web-app-db3d0fbf5df2.herokuapp.com/users/sign_in',
-    },
-    {
-      id: 4,
-      name: 'Search Engine',
-      featuredImage: '/images/search_engine.png',
-      description:
-        'This is a search engine where we save the search terms entered by users, based on their IP addresses, and then perform analytics on these searches.',
-      technologies: ['Rails', 'MySQL', 'JavaScript'],
-      sourceLink: 'https://github.com/Terbeche/search-engine',
-      demoLink: 'https://search-engine-477b674c37d7.herokuapp.com/',
     },
     {
       id: 5,
@@ -93,36 +93,6 @@ Websites:
       technologies: ['React', 'PHP', 'Sass'],
       sourceLink: 'https://bitbucket.org/my-assignments-projects/products-app-react/src/dev/',
       demoLink: 'https://product-app-react.netlify.app',
-    },
-    {
-      id: 7,
-      name: 'TV Show',
-      featuredImage: '/images/tv_shows.PNG',
-      description:
-        'This is a website that displays a list of movies from an external API',
-      technologies: ['Html', 'CSS', 'JavaScript'],
-      sourceLink: 'https://github.com/Terbeche/TV-SHOW',
-      demoLink: 'https://tv-show-platform.netlify.app/',
-    },
-    {
-      id: 8,
-      name: 'E Learning Platform',
-      featuredImage: '/images/e_learning.PNG',
-      description:
-        'This is a E-learning-platform website is a simple static website representing an E-Learning platform.',
-      technologies: ['Html', 'CSS', 'JavaScript'],
-      sourceLink: 'https://github.com/Terbeche/E-learning-platform',
-      demoLink: 'https://global-learning-platform.netlify.app/',
-    },
-    {
-      id: 9,
-      name: 'Countries Information',
-      featuredImage: '/images/countries_information.PNG',
-      description:
-        'In this project, I have worked with the real live data from the RESTCountries API. This web application provides some information about more than 250 countries worldwide like the area, population, capital, continent, and the official flag.',
-      technologies: ['React', 'Redux', 'CSS'],
-      sourceLink: 'https://github.com/Terbeche/countries-information',
-      demoLink: 'https://countries-information-api.netlify.app/',
     }
   ];
 
