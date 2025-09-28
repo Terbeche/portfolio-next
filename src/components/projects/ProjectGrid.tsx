@@ -66,14 +66,13 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
               className="group bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:border-accent/40 transition-all duration-300"
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 w-full flex items-center justify-center bg-background overflow-hidden">
                 <Image
                   src={project.featuredImage}
                   alt={project.name}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
               </div>
 
               {/* Project Content */}
