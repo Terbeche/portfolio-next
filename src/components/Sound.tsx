@@ -93,7 +93,7 @@ const Sound: React.FC = () => {
   };
 
   return (
-    <div className="fixed top-4 right-2.5 xs:right-4 z-50 group">
+    <div className="fixed top-2 right-2 xs:right-4 z-50 group">
       {showModal && (
         <Modal onClose={() => setShowModal(false)} toggle={toggle} />
       )}
