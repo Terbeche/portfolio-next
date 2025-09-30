@@ -52,7 +52,7 @@ Websites:
         'A weather app to stay up-to-date with the weather all around the world',
       technologies: ['FastAPI', 'Vue','Nuxt', 'NuxtUI'],
       sourceLink: 'https://github.com/Terbeche/weather-app',
-      demoLink: 'https://weather-app-dashboard-seven.vercel.app/',
+      demoLink: 'https://weather-app-dashboard-nuxt.netlify.app/',
     },
     {
       id: 3,
@@ -87,12 +87,12 @@ Websites:
     {
       id: 6,
       name: 'Product List',
-      featuredImage: '/images/product_list.PNG',
+      featuredImage: '/images/product_list.png',
       description:
-        'This project is a web application that uses React to interact with an API created using PHP and MySQL. The application allows the user to view a list of available products, add new products to the list, and delete one or multiple products at once.',
-      technologies: ['React', 'PHP', 'Sass'],
-      sourceLink: 'https://bitbucket.org/my-assignments-projects/products-app-react/src/dev/',
-      demoLink: 'https://product-app-react.netlify.app',
+        'This project is a web application that uses React to interact with an API created using PHP, MySQL and GraphQL. The application allows the user to add products to the shopping cart.',
+      technologies: ['React', 'PHP', 'GraphQL', 'MySQL'],
+      sourceLink: 'https://github.com/Terbeche/product-list-dashboard',
+      demoLink: 'https://product-list-dashboard-0d5009f1d184.herokuapp.com',
     }
   ];
 
