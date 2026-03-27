@@ -1,5 +1,5 @@
-import React from "react";
 import ItemLayout from "./ItemLayout";
+import Image from "next/image";
 
 const AboutDetails: React.FC = () => {
   return (
@@ -30,38 +30,46 @@ const AboutDetails: React.FC = () => {
         <ItemLayout
           className={"col-span-full sm:col-span-6 md:col-span-4 !p-0"}
         >
-          <img
+          <Image
             className="w-full h-auto"
             src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api/top-langs?username=terbeche&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
             alt="Mostefa's Top Programming Languages"
-            loading="lazy"
+            width={500}
+            height={200}
+            unoptimized
           />
         </ItemLayout>
 
         <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <img
+          <Image
             className="w-full h-auto"
             src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api?username=terbeche&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
             alt="Mostefa's GitHub Stats"
-            loading="lazy"
+            width={500}
+            height={300}
+            unoptimized
           />
         </ItemLayout>
 
         <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <img
+          <Image
             className="w-full h-auto"
             src={`${process.env.NEXT_PUBLIC_GITHUB_STREAK_STATS_URL}?user=terbeche&theme=dark&hide_border=true&type=svg&background=EB545400&ring=FEFE5B&currStreakLabel=FEFE5B`}
             alt="Mostefa's GitHub Streak Stats"
-            loading="lazy"
+            width={500}
+            height={200}
+            unoptimized
           />
         </ItemLayout>
 
         <ItemLayout className={"col-span-full"}>
-          <img
+          <Image
             className="w-full h-auto"
             src={`https://skillicons.dev/icons?i=vue,nuxt,react,redux,nextjs,ruby,rails,python,django,aws,docker,git,github,html,css,sass,tailwind,js,ts,linux,mysql,postgres,nodejs,npm,yarn,vite,threejs,netlify,vercel,heroku,sentry,vscode`}
             alt="Mostefa's Skills"
-            loading="lazy"
+            width={800}
+            height={300}
+            unoptimized
           />
         </ItemLayout>
       </div>

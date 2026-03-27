@@ -2,7 +2,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { GithubIcon } from "../navigation/SocialIcons";
 
 const container = {
   hidden: { opacity: 0 },
@@ -115,7 +116,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 border border-accent/30 text-accent rounded-lg font-medium hover:bg-accent/10 transition-colors"
                   >
-                    <Github className="w-4 h-4" />
+                    <GithubIcon className="w-4 h-4" />
                     Code
                   </Link>
                 </div>

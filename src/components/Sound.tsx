@@ -43,17 +43,17 @@ const Sound: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const handleFirstUserInteraction = useCallback(() => {
-      const musicConsent = localStorage.getItem("musicConsent");
-      if (musicConsent === "true" && !isPlaying && audioRef.current) {
-        audioRef.current.play();
-        setIsPlaying(true);
-      }
-  
-      ["click", "keydown", "touchstart"].forEach((event) =>
-        document.removeEventListener(event, handleFirstUserInteraction)
-      );
-    }, [isPlaying]);
+  const handleFirstUserInteraction = useCallback(function interactionHandler() {
+    const musicConsent = localStorage.getItem("musicConsent");
+    if (musicConsent === "true" && !isPlaying && audioRef.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+
+    ["click", "keydown", "touchstart"].forEach((event) =>
+      document.removeEventListener(event, interactionHandler)
+    );
+  }, [isPlaying]);
 
   useEffect(() => {
     const consent = localStorage.getItem("musicConsent");

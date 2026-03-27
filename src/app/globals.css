@@ -1,6 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-muted: rgb(var(--muted));
+  --color-accent: rgb(var(--accent));
+
+  --font-inter: var(--font-inter);
+
+  --background-image-firefly-radial: radial-gradient(50% 50% at 50% 50%, rgba(253, 255, 80, 0.5) 0%, rgba(217,217,217, 0) 100%);
+
+  --shadow-glass-inset: inset 0 17px 5px -9px rgba(254,254,91, 0.05);
+  --shadow-glass-sm: 5px 5px 20px 0px rgba(254,254,91, 0.3);
+
+  --animate-spin-slow: spin 40s linear infinite;
+  --animate-spin-slow-reverse: spin-reverse 40s linear infinite;
+
+  --breakpoint-xs: 480px;
+
+  @keyframes spin-reverse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+}
 
 @layer base {
   :root {
@@ -8,33 +30,32 @@
     --foreground: 225 225 225;
     --muted: 115 115 115;
     --accent: 254 254 91;
-    /* hex value of rgb(254,254,91) color is  #FEFE5B  */
   }
 }
 
-@layer utilities {
-  .pause {
-    animation-play-state: paused;
-  }
+@utility pause {
+  animation-play-state: paused;
+}
 
-  .custom-bg {
-    @apply bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] shadow-glass-inset hover:shadow-glass-sm;
+@utility custom-bg {
+  background-color: color-mix(in srgb, var(--color-background), transparent 80%);
+  border: 1px solid color-mix(in srgb, var(--color-accent), transparent 70%);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-glass-inset);
+  &:hover {
+    box-shadow: var(--shadow-glass-sm);
   }
+}
 
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+@utility line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @keyframes move {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(100px, 100px);
-  }
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(100px, 100px); }
 }

@@ -5,14 +5,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import {
-  Github,
   Home,
-  Linkedin,
   NotebookText,
   Palette,
   Phone,
   User,
 } from "lucide-react";
+import { GithubIcon, LinkedinIcon, TwitterIcon } from "./SocialIcons";
 
 const getIcon = (icon: string) => {
   switch (icon) {
@@ -25,11 +24,11 @@ const getIcon = (icon: string) => {
     case "contact":
       return <Phone className="w-5 h-5" strokeWidth={1.5} />;
     case "github":
-      return <Github className="w-5 h-5" strokeWidth={1.5} />;
+      return <GithubIcon className="w-5 h-5" />;
     case "linkedin":
-      return <Linkedin className="w-5 h-5" strokeWidth={1.5} />;
+      return <LinkedinIcon className="w-5 h-5" />;
     case "twitter":
-      return <X className="w-5 h-5" strokeWidth={1.5} />;
+      return <TwitterIcon className="w-5 h-5" />;
     case "resume":
       return <NotebookText className="w-5 h-5" strokeWidth={1.5} />;
     default:

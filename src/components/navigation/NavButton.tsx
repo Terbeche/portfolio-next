@@ -1,13 +1,12 @@
 import {
-    Github,
     Home,
-    Linkedin,
     NotebookText,
     Palette,
     Phone,
     X,
     User,
   } from "lucide-react";
+import { GithubIcon, LinkedinIcon, TwitterIcon } from "./SocialIcons";
   import Link from "next/link";
   import React from "react";
   import ResponsiveComponent from "../ResponsiveComponent";
@@ -25,11 +24,11 @@ import {
       case "contact":
         return <Phone className="w-full h-auto" strokeWidth={1.5} />;
       case "github":
-        return <Github className="w-full h-auto" strokeWidth={1.5} />;
+        return <GithubIcon className="w-full h-auto" />;
       case "linkedin":
-        return <Linkedin className="w-full h-auto" strokeWidth={1.5} />;
+        return <LinkedinIcon className="w-full h-auto" />;
       case "twitter":
-        return <X className="w-full h-auto" strokeWidth={1.5} />;
+        return <TwitterIcon className="w-full h-auto" />;
       case "resume":
         return <NotebookText className="w-full h-auto" strokeWidth={1.5} />;
       default:

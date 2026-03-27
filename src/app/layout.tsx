@@ -4,6 +4,7 @@ import "./globals.css";
 import clsx from "clsx";
 import FireFliesBackground from "@/components/FireFliesBackground";
 import Sound from "@/components/Sound";
+import ClientOnly from "@/components/ClientOnly";
 
 
 const inter = Inter({
@@ -31,8 +32,10 @@ export default function RootLayout({
       >
         
         {children}
-        <FireFliesBackground />
-        <Sound />
+        <ClientOnly>
+          <FireFliesBackground />
+          <Sound />
+        </ClientOnly>
         <div id="my-modal" />
       </body>
     </html>
