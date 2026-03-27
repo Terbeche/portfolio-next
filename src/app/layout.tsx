@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import clsx from "clsx";
 import FireFliesBackground from "@/components/FireFliesBackground";
-import Sound from "@/components/Sound";
 import ClientOnly from "@/components/ClientOnly";
 
 
@@ -34,9 +33,7 @@ export default function RootLayout({
         {children}
         <ClientOnly>
           <FireFliesBackground />
-          <Sound />
         </ClientOnly>
-        <div id="my-modal" />
       </body>
     </html>
   );
