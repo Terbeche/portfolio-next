@@ -11,10 +11,10 @@ const AboutDetails: React.FC = () => {
           }
         >
           <h2 className="  text-xl md:text-2xl text-left w-full capitalize">
-           Hey There, I&apos;m Mostefa Terbeche
+            Hey There, I&apos;m Mostefa Terbeche
           </h2>
           <p className="font-light  text-xs sm:text-sm md:text-base   ">
-          I&apos;m a Full Stack Web Developer. I can help you build a product, feature or website. Look through some of my work and experience! If you like what you see and have a project you need coded, don&apos;t hesitate to contact me.
+            I&apos;m a Full Stack Web Developer. I can help you build a product, feature or website. Look through some of my work and experience! If you like what you see and have a project you need coded, don&apos;t hesitate to contact me.
           </p>
         </ItemLayout>
 
@@ -22,44 +22,9 @@ const AboutDetails: React.FC = () => {
           className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
         >
           <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
-            2+{" "}
+            3+{" "}
             <sub className="font-semibold text-base">years of experience</sub>
           </p>
-        </ItemLayout>
-
-        <ItemLayout
-          className={"col-span-full sm:col-span-6 md:col-span-4 !p-0"}
-        >
-          <Image
-            className="w-full h-auto"
-            src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api/top-langs?username=terbeche&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
-            alt="Mostefa's Top Programming Languages"
-            width={500}
-            height={200}
-            unoptimized
-          />
-        </ItemLayout>
-
-        <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <Image
-            className="w-full h-auto"
-            src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api?username=terbeche&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
-            alt="Mostefa's GitHub Stats"
-            width={500}
-            height={300}
-            unoptimized
-          />
-        </ItemLayout>
-
-        <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <Image
-            className="w-full h-auto"
-            src={`${process.env.NEXT_PUBLIC_GITHUB_STREAK_STATS_URL}?user=terbeche&theme=dark&hide_border=true&type=svg&background=EB545400&ring=FEFE5B&currStreakLabel=FEFE5B`}
-            alt="Mostefa's GitHub Streak Stats"
-            width={500}
-            height={200}
-            unoptimized
-          />
         </ItemLayout>
 
         <ItemLayout className={"col-span-full"}>
