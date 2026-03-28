@@ -16,7 +16,7 @@ export default function Home() {
       />
 
       <ModernNavigation />
-      
+
       {/* Hero Section */}
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-center">
@@ -25,7 +25,7 @@ export default function Home() {
             <span className="text-accent">Mostefa Terbeche</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Full Stack Web Developer passionate about creating amazing digital experiences
+            Product Engineer passionate about creating amazing digital experiences
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

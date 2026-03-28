@@ -14,7 +14,7 @@ const AboutDetails: React.FC = () => {
             Hey There, I&apos;m Mostefa Terbeche
           </h2>
           <p className="font-light  text-xs sm:text-sm md:text-base   ">
-            I&apos;m a Full Stack Web Developer. I can help you build a product, feature or website. Look through some of my work and experience! If you like what you see and have a project you need coded, don&apos;t hesitate to contact me.
+            I&apos;m a Product Engineer passionate about creating amazing digital experiences. I can help you build a product, feature or website. Look through some of my work and experience! If you like what you see and have a project you need coded, don&apos;t hesitate to contact me.
           </p>
         </ItemLayout>
 
