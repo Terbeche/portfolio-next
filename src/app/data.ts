@@ -44,13 +44,13 @@ export const projectsData: Project[] = [
   },
   {
     id: 2,
-    name: 'Promo-DZ',
-    featuredImage: '/images/promodz.png',
+    name: "Exp'Eyes",
+    featuredImage: '/images/expeyes.png',
     description:
-      'A webapp that allows users to find the best deals and discounts in Algeria',
-    technologies: ['Ruby', 'Rails', 'PostgreSQL', 'TailwindCSS'],
-    sourceLink: 'https://github.com/Terbeche/promodz',
-    demoLink: 'https://promodz.up.railway.app/',
+      'A payroll and financial consulting platform built with Ruby on Rails. Features a secure client portal for uploading sensitive payroll documents and messaging accounting admins',
+    technologies: ['Ruby', 'Rails', 'PostgreSQL', 'TailwindCSS', 'Hotwire', 'RSpec', 'Pundit', 'Devise'],
+    sourceLink: 'https://expeyes.fr',
+    demoLink: 'https://expeyes.fr',
   },
   {
     id: 3,

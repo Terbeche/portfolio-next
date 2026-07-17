@@ -72,6 +72,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
                   src={project.featuredImage}
                   alt={project.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-contain"
                 />
               </div>

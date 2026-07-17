@@ -76,6 +76,20 @@ const ModernNavigation: React.FC = () => {
                 {getIcon(btn.icon)}
               </Link>
             ))}
+            <a
+              href="https://www.f6s.com/member/mostefa-terbeche?follow=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Follow Mostefa Terbeche on F6S"
+              className="flex items-center hover:opacity-80 transition-opacity pl-2"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://www.f6s.com/images/f6s-follow-secondary.png"
+                alt="Follow Mostefa Terbeche on F6S"
+                style={{ width: "78px", height: "22px", border: 0 }}
+              />
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -115,7 +129,7 @@ const ModernNavigation: React.FC = () => {
             
             {/* External links in mobile */}
             <div className="border-t border-accent/20 pt-2">
-              <div className="flex justify-center space-x-6">
+              <div className="flex justify-center items-center space-x-6">
                 {externalLinks.map((btn) => (
                   <Link
                     key={btn.label}
@@ -128,6 +142,20 @@ const ModernNavigation: React.FC = () => {
                     {getIcon(btn.icon)}
                   </Link>
                 ))}
+                <a
+                  href="https://www.f6s.com/member/mostefa-terbeche?follow=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Follow Mostefa Terbeche on F6S"
+                  className="flex items-center hover:opacity-80 transition-opacity"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://www.f6s.com/images/f6s-follow-secondary.png"
+                    alt="Follow Mostefa Terbeche on F6S"
+                    style={{ width: "78px", height: "22px", border: 0 }}
+                  />
+                </a>
               </div>
             </div>
           </div>
