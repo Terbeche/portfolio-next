@@ -11,16 +11,17 @@ const ProjectLink = motion(Link);
 interface ProjectLayoutProps {
   name: string;
   description: string;
-  demoLink: string;
-  sourceLink: string;
+  demoLink?: string;
+  sourceLink?: string;
   technologies: string[];
 }
 
 const ProjectLayout: React.FC<ProjectLayoutProps> = ({ name, description, demoLink, sourceLink, technologies }) => {
+  const targetLink = demoLink || sourceLink || "#";
   return (
     <ProjectLink
       variants={item}
-      href={demoLink}
+      href={targetLink}
       target="_blank"
       className="text-sm md:text-base flex flex-col md:flex-row items-center justify-between w-full relative rounded-lg overflow-hidden p-4 md:p-6 custom-bg"
     >
@@ -34,12 +35,16 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({ name, description, demoLi
             ))}
           </ul>
           <div className="flex items-end space-y-1 mt-4 md:mt-0 gap-x-2 text-lg space-x-12 text-sky-400">
-            <Link href={demoLink} target="_blank" className="text-primary">
-              Demo Link
-            </Link>
-            <Link href={sourceLink} target="_blank" className="text-primary">
-              Source Link
-            </Link>
+            {demoLink && (
+              <Link href={demoLink} target="_blank" className="text-primary">
+                Demo Link
+              </Link>
+            )}
+            {sourceLink && (
+              <Link href={sourceLink} target="_blank" className="text-primary">
+                Source Link
+              </Link>
+            )}
           </div>
         </div>
       </div>

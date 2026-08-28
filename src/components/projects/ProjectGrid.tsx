@@ -25,8 +25,8 @@ interface Project {
   id: number;
   name: string;
   description: string;
-  demoLink: string;
-  sourceLink: string;
+  demoLink?: string;
+  sourceLink?: string;
   featuredImage: string;
   technologies: string[];
 }
@@ -100,26 +100,30 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
                 </div>
 
                 {/* Project Links */}
-                <div className="flex items-center justify-between">
-                  <Link
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-accent text-background rounded-lg font-medium hover:bg-accent/90 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </Link>
+                <div className="flex items-center justify-between gap-3">
+                  {project.demoLink && (
+                    <Link
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-accent text-background rounded-lg font-medium hover:bg-accent/90 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </Link>
+                  )}
                   
-                  <Link
-                    href={project.sourceLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-accent/30 text-accent rounded-lg font-medium hover:bg-accent/10 transition-colors"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                    Code
-                  </Link>
+                  {project.sourceLink && (
+                    <Link
+                      href={project.sourceLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 border border-accent/30 text-accent rounded-lg font-medium hover:bg-accent/10 transition-colors"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                      Code
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>

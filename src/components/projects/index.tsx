@@ -17,8 +17,8 @@ interface Project {
   id: number;
   name: string;
   description: string;
-  demoLink: string;
-  sourceLink: string;
+  demoLink?: string;
+  sourceLink?: string;
   featuredImage: string;
   technologies: string[];
 }
