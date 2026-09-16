@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import { Toaster, toast } from "sonner";
 import { motion } from "framer-motion";
 
@@ -16,69 +15,59 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
     },
   },
 };
 
 const item = {
-  hidden: { scale: 0 },
-  show: { scale: 1 },
+  hidden: { scale: 0.95, opacity: 0 },
+  show: { scale: 1, opacity: 1 },
 };
 
 export default function Form() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormInputs>();
 
-  const sendEmail = (params: Record<string, unknown>) => {
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    setIsSubmitting(true);
     const toastId = toast.loading("Sending your message, please wait...");
 
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID as string,
-        params,
-        {
-          publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY as string,
-          limitRate: {
-            throttle: 5000,
-          },
-        }
-      )
-      .then(
-        () => {
-          toast.success(
-            "I have received your message, I will get back to you soon!",
-            {
-              id: toastId,
-            }
-          );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          console.log("FAILED...", error.text);
-          toast.error(
-            "There was an error sending your message, please try again later!",
-            {
-              id: toastId,
-            }
-          );
-        }
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message.");
+      }
+
+      toast.success(
+        "Thank you! I have received your message and will get back to you soon.",
+        { id: toastId }
       );
-};
-
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    const templateParams = {
-      to_name: "Mostefa Terbeche",
-      from_name: data.name,
-      reply_to: data.email,
-      message: data.message,
-    };
-
-    sendEmail(templateParams);
+      reset();
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "There was an error sending your message. Please try again later.";
+      toast.error(message, { id: toastId });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -91,67 +80,83 @@ export default function Form() {
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md w-full flex flex-col items-center justify-center space-y-4"
       >
-  <motion.input
-          variants={item}
-          type="text"
-          placeholder="name"
-          {...register("name", {
-            required: "This field is required!",
-            minLength: {
-              value: 3,
-              message: "Name should be atleast 3 characters long.",
-            },
-          })}
-          className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"
-        />
-        {errors.name && (
-          <span className="inline-block self-start text-accent">
-            {errors.name.message}
-          </span>
-        )}
-        <motion.input
-          variants={item}
-          type="email"
-          placeholder="email"
-          {...register("email", { required: "This field is required!" })}
-          className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"
-        />
-        {errors.email && (
-          <span className="inline-block self-start text-accent">
-            {errors.email.message}
-          </span>
-        )}
-        <motion.textarea
-          variants={item}
-          placeholder="message"
-          {...register("message", {
-            required: "This field is required!",
-            maxLength: {
-              value: 1000,
-              message: "Message should be less than 1000 characters",
-            },
-            minLength: {
-              value: 50,
-              message: "Message should be more than 50 characters",
-            },
-          })}
-          className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"
-        />
-        {errors.message && (
-          <span className="inline-block self-start text-accent">
-            {errors.message.message}
-          </span>
-        )}
+        <motion.div variants={item} className="w-full">
+          <input
+            type="text"
+            placeholder="Your Name"
+            disabled={isSubmitting}
+            {...register("name", {
+              required: "This field is required!",
+              minLength: {
+                value: 2,
+                message: "Name should be at least 2 characters long.",
+              },
+            })}
+            className="w-full p-3 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg disabled:opacity-50"
+          />
+          {errors.name && (
+            <span className="inline-block mt-1 text-xs text-accent">
+              {errors.name.message}
+            </span>
+          )}
+        </motion.div>
 
-        <motion.input
+        <motion.div variants={item} className="w-full">
+          <input
+            type="email"
+            placeholder="Your Email"
+            disabled={isSubmitting}
+            {...register("email", {
+              required: "This field is required!",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Please enter a valid email address.",
+              },
+            })}
+            className="w-full p-3 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg disabled:opacity-50"
+          />
+          {errors.email && (
+            <span className="inline-block mt-1 text-xs text-accent">
+              {errors.email.message}
+            </span>
+          )}
+        </motion.div>
+
+        <motion.div variants={item} className="w-full">
+          <textarea
+            placeholder="Your Message..."
+            rows={5}
+            disabled={isSubmitting}
+            {...register("message", {
+              required: "This field is required!",
+              maxLength: {
+                value: 2000,
+                message: "Message should be less than 2000 characters",
+              },
+              minLength: {
+                value: 10,
+                message: "Message should be at least 10 characters",
+              },
+            })}
+            className="w-full p-3 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg disabled:opacity-50"
+          />
+          {errors.message && (
+            <span className="inline-block mt-1 text-xs text-accent">
+              {errors.message.message}
+            </span>
+          )}
+        </motion.div>
+
+        <motion.button
           variants={item}
-          value="Cast your message!"
-          className="px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid
-      hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize
-      "
           type="submit"
-        />
-        </motion.form>
+          disabled={isSubmitting}
+          className="w-full py-4 rounded-md shadow-lg bg-background border border-accent/40 border-solid
+            hover:shadow-glass-sm backdrop-blur-sm text-foreground hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? "Sending message..." : "Send Message"}
+        </motion.button>
+      </motion.form>
     </>
   );
 }

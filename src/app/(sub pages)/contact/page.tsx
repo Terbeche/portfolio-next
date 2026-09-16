@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { QrCode, ArrowRight } from "lucide-react";
 import bg from "../../../../public/background/contact-background.png";
 import Form from "@/components/contact/Form";
 import ModernNavigation from "@/components/navigation/ModernNavigation";
@@ -29,7 +31,18 @@ export default function Contact() {
             I&apos;m always interested in hearing about new projects, opportunities, and collaborations. 
             Whether you have a question or just want to say hi, feel free to drop me a message!
           </p>
+
+          {/* Quick link to Digital Business Card */}
+          <Link
+            href="/connect"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium bg-accent/10 border border-accent/30 text-accent hover:bg-accent/20 hover:border-accent transition-all shadow-sm group"
+          >
+            <QrCode className="w-4 h-4" />
+            <span>Need a fast 10-second summary? View Digital Business Card</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
         </div>
+
         <Form />
       </article>
     </>
